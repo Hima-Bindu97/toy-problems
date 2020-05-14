@@ -1,71 +1,19 @@
 <!doctype html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>Todo list</title>
 </head>
 <body>
     <h1 style="text-align:center">TODO LIST</h1>
-    <div class="sample">
-        <div id="div" class="header">
-            <input type="text" id="input" placeholder="Todo item" style="width:200px">
-            <span onclick="newitem()" class="addbtn" style="padding-left:200px; width:auto">add</span>
-        </div>
-        <ul id="unordered">
-            <li>morning session</li>
-            <li>aftn session</li>
-            <li>SS session</li>
-            <li>CP</li>
-        </ul>
+    <h2 style="margin:5px"></h2>
+    <div class="main">
+        <input type="text" id="Task" placeholder="Todo item">
+        <span onclick="newitem()" class="addbtn">add</span>
     </div>
-<script>
-var myNodelist=document.getElementsByTagName("LI");
-var i;
-for(i=0;i<myNodelist.length;i++){
-    var span=document.createElement("SPAN");
-    var text=document.createTextNode("\u00D7");
-    span.className="close";
-    span.appendChild(text);
-    myNodelist[i]appendChild(span);
-}
-var close=document.getElementsByClassName("close");
-var i;
-for(i=0;i<close.length;i++){
-    close[i].onclick=function(){
-        var div=this.parentElement;
-        div.style.display="none";
-    }
-}
-var list=document.querySelector('ul');
-list.addEventListener('click',function(ev)){
-    if(ev.target,tagName=='LI'){
-        ev.target.classList.toggle('checked');
-    }
-},false);
-function newitem(){
-    var li=document.createElement("li");
-    var inputvalue=document.getElementsById("myinput").value;
-    var t=document.createTextNode(inputvalue);
-    li.appendChild(t);
-    if(inputvalue==''){
-        alert("input should not be null");
-    }
-    else{
-        document.getElementById("unordered").appendChild(li);
-    }
-    document.getElementById("myinput").value="";
-    var span=document.createElement("SPAN");
-    var text=document.createElement("\u00D7");
-    span.className="close";
-    span.appendChild(text);
-    li.appendChild(span);
-    for(i=0;i<close.length;i++){
-        close[i].onclick=function(){
-            var div=this.parentElement;
-            div.style.display="none";
-        }
-    }
-}
-</script>
+    <ul id="list">
+    </ul>
+    <button type="button" id="clear" onclick="removeAll()">Clear</button>
+    <script type="text/javascript" src="todo.js"></script>
 </body>
 </html>
